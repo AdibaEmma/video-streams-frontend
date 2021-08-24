@@ -21,21 +21,25 @@ export class GoogleAuth extends Component {
         this.setState({ isSignedIn: this.auth.isSignedIn.get()})
     }
 
+    onSignIn = (e) => {
+        e.preventDefault();
+        window.gapi.auth2.getAuthInstance().signIn()
+    }
+
+    onSignOut = (e) => {
+        e.preventDefault();
+        window.gapi.auth2.getAuthInstance().signOut()
+    }
+
     renderAuthButton() {
         if( this.state.isSignedIn === null ) { 
             return null;
         } else if (this.state.isSignedIn) {
-            return <div><button className="ui red google button" onClick={ (e) => {
-                e.preventDefault();
-                window.gapi.auth2.getAuthInstance().signOut()
-            }}>
+            return <div><button className="ui red google button" onClick={ this.onSignOut}>
             <i className="google icon"></i>
             Logout</button></div>
         } else {
-            return <div><button className="ui blue google button" onClick={ (e) => {
-                e.preventDefault();
-                window.gapi.auth2.getAuthInstance().signIn()
-            }}>
+            return <div><button className="ui blue google button" onClick={ this.onSignIn}>
             <i className="google icon"></i>
             Sign in with Google</button></div>
         }
