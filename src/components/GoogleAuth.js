@@ -16,8 +16,6 @@ export class GoogleAuth extends Component {
                 this.auth.isSignedIn.listen( this.onAuthChange);
             });
         });
-
-        console.log(this.props); 
     }
 
     onAuthChange = ( isSignedIn ) => {
