@@ -39,9 +39,12 @@ const validate = (formValues) => {
     if(!formValues.description) {
         errors.description = "You must enter a description"
     }
+
+    return errors
 }
 
 export default reduxForm({
-    form: 'streamCreate'
+    form: 'streamCreate',
+    validate
 })(StreamCreate)
 
