@@ -22,7 +22,7 @@ export class StreamEdit extends Component {
         return (
             <div>
                 <h3>Edit a Stream</h3>
-                <StreamForm initialValues={ _.pick(this.props.stream, 'title', 'description', 'userId') } onSubmit={this.onSubmit} />
+                <StreamForm initialValues={ _.pick(this.props.stream, 'title', 'description') } onSubmit={this.onSubmit} />
             </div>
         )
     }
