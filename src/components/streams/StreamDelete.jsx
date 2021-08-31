@@ -6,19 +6,21 @@ import { getStream, deleteStream } from '../../actions'
 import { Link } from 'react-router-dom'
 
 class StreamDelete extends Component {
+
+    componentDidMount() {
+        this.props.getStream(this.props.match.params.id)
+    }
+
     renderActions() {
+        const { id } = this.props.match.params
         return (
             <React.Fragment>
-                <button onClick={() => deleteStream(this.props.stream.id)} className="ui negative button">Delete</button>
+                <button onClick={() => this.props.deleteStream(id)} className="ui negative button">Delete</button>
                 <Link to={'/'} className="ui button">Cancel</Link>
             </React.Fragment>
         )
     }
     
-
-    componentDidMount() {
-        this.props.getStream(this.props.match.params.id)
-    }
 
     render() {
     return (
